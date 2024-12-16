@@ -170,6 +170,7 @@ body {
   margin-right: 1.5em;
   border: none;
   color: #587ef4;
+  
 }
 @media screen and (max-width: 600px) {
   .wrapper {
@@ -180,5 +181,3 @@ body {
     gap: 1em;
   }
 }
-
-  
