@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Budget App Calculator</title>
+    <title>Budget App</title>
     <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
@@ -15,14 +15,137 @@
     />
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background: url("images/bg-pattern.jpg") no-repeat center center/cover;
+        color: #333;
+      }
+      .wrapper {
+        width: 90%;
+        max-width: 43.75em;
+        margin: 2em auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+      .container {
+        padding: 2em;
+      }
+      h3 {
+        color: #4a90e2;
+        font-weight: 500;
+        margin-bottom: 0.5em;
+      }
+      .sub-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5em;
+      }
+      .total-amount-container,
+      .user-amount-container {
+        background: url("images/card-bg.jpg") no-repeat center center/cover;
+        padding: 1.5em;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+      .submit {
+        display: inline-block;
+        background-color: #4a90e2;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 0.7em 1.5em;
+        margin-top: 0.5em;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .submit:hover {
+        background-color: #357bd8;
+      }
+      input {
+        width: 100%;
+        padding: 0.7em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 1em;
+      }
+      .output-container {
+        display: flex;
+        justify-content: space-between;
+        background-color: #f4f8ff;
+        padding: 1em;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 1.5em;
+      }
+      .output-container div {
+        text-align: center;
+      }
+      .output-container p {
+        color: #4a90e2;
+        font-weight: 500;
+      }
+      .output-container span {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+      }
+      .list {
+        padding: 1.5em;
+        background-color: #f7f9fc;
+        border-top: 1px solid #ccc;
+      }
+      .list-container {
+        margin-top: 1em;
+      }
+      .list-container .list-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 0.8em 1em;
+        margin-bottom: 0.5em;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .list-container .list-item .product-title {
+        font-weight: 500;
+        color: #333;
+      }
+      .list-container .list-item .amount {
+        color: #4a90e2;
+        font-weight: bold;
+      }
+      .icons-container button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2em;
+        color: #4a90e2;
+        margin-left: 0.5em;
+      }
+      .icons-container button:hover {
+        color: #357bd8;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
       <div class="container">
+        <h2 style="text-align: center; color: #4a90e2; margin-bottom: 1em">
+          <i class="fas fa-piggy-bank"></i> Budget Planner
+        </h2>
         <div class="sub-container">
           <!-- Budget -->
           <div class="total-amount-container">
-            <h3>Budget</h3>
+            <h3><i class="fas fa-wallet"></i> Set Budget</h3>
             <p class="hide error" id="budget-error">
               Value cannot be empty or negative
             </p>
@@ -31,11 +154,14 @@
               id="total-amount"
               placeholder="Enter Total Amount"
             />
-            <button class="submit" id="total-amount-button">Set Budget</button>
+            <button class="submit" id="total-amount-button">
+              Set Budget
+            </button>
           </div>
+
           <!-- Expenditure -->
           <div class="user-amount-container">
-            <h3>Expenses</h3>
+            <h3><i class="fas fa-cart-arrow-down"></i> Add Expense</h3>
             <p class="hide error" id="product-title-error">
               Values cannot be empty
             </p>
@@ -50,11 +176,12 @@
               id="user-amount"
               placeholder="Enter Cost of Product"
             />
-            <button class="submit" id="check-amount">Check Amount</button>
+            <button class="submit" id="check-amount">Add Expense</button>
           </div>
         </div>
+
         <!-- Output -->
-        <div class="output-container flex-space">
+        <div class="output-container">
           <div>
             <p>Total Budget</p>
             <span id="amount">0</span>
@@ -69,10 +196,13 @@
           </div>
         </div>
       </div>
+
       <!-- List -->
       <div class="list">
-        <h3>Expense List</h3>
-        <div class="list-container" id="list"></div>
+        <h3><i class="fas fa-list"></i> Expense List</h3>
+        <div class="list-container" id="list">
+          <!-- Dynamic content will go here -->
+        </div>
       </div>
     </div>
     <!-- Script -->
