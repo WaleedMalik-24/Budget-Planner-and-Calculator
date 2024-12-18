@@ -188,10 +188,14 @@ input:focus {
 .icons-container button {
   background: none;
   border: none;
+<<<<<<< HEAD
   color: #5479f0;
   font-size: 1.3em;
   cursor: pointer;
   transition: transform 0.3s, color 0.3s;
+=======
+  color: #587ef4;
+>>>>>>> 5582cf6d103fd82e87c318cbc821e655c3456171
 }
 
 .icons-container button:hover {
